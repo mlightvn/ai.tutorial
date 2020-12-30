@@ -1,6 +1,16 @@
 <template>
   <v-footer app class="footer">
-    Footer
+    <span
+      v-for="(item, i) in items"
+      :key="i"
+    >
+      <v-btn icon dense v-if="item.href" :href="item.href" target="_blank">
+        <v-icon v-if="item.icon">{{item.icon}}</v-icon>
+      </v-btn>
+    </span>
+
+
+
   </v-footer>
 </template>
 
@@ -8,8 +18,15 @@
 export default {
   name: 'Footer',
   props: {
-    msg: String,
   },
+  data: () =>{
+    return {
+      items:[
+        { text: 'GitHub', icon: 'mdi-github', href:"https://github.com/namtenten" },
+        { text: 'Donate', icon: 'mdi-coffee', href:"https://www.paypal.com/paypalme/rakujin" },
+      ]
+    }
+  }
 };
 </script>
 
